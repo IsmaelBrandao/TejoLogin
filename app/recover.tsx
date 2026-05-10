@@ -55,7 +55,7 @@ export default function RecoverScreen() {
       <AuthInput
         autoCapitalize="none"
         autoComplete="email"
-        icon={<Mail size={21} color="#0F5E53" />}
+        icon={<Mail size={21} color="#8A4A24" />}
         keyboardType="email-address"
         label="E-mail"
         onChangeText={setEmail}
@@ -73,7 +73,7 @@ export default function RecoverScreen() {
 
       <AuthButton
         disabled={!canSubmit}
-        icon={<Send size={19} color="#FFFFFF" />}
+        icon={<Send size={19} color="#FFF7EA" />}
         loading={loading}
         onPress={handleRecover}
       >
@@ -82,7 +82,7 @@ export default function RecoverScreen() {
 
       <View style={styles.footerRow}>
         <Pressable onPress={() => router.back()} style={styles.backLink}>
-          <ArrowLeft size={18} color="#0F5E53" />
+          <ArrowLeft size={18} color="#8A4A24" />
           <Text style={styles.backText}>Voltar para entrar</Text>
         </Pressable>
       </View>
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   backText: {
-    color: "#0F5E53",
+    color: "#8A4A24",
     fontSize: 14,
     fontWeight: "900",
     letterSpacing: 0,

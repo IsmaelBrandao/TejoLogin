@@ -1,6 +1,7 @@
 import { ReactNode, useRef, useState } from "react";
 import {
   Animated,
+  Platform,
   Pressable,
   StyleSheet,
   Text,
@@ -43,7 +44,7 @@ export function AuthInput({
 
   const borderColor = focusAnim.interpolate({
     inputRange: [0, 1],
-    outputRange: [error ? "#CC5B4F" : "#D8D2C7", "#0F5E53"],
+    outputRange: [error ? "#CC5B4F" : "#E0C6A2", "#A45D2B"],
   });
 
   return (
@@ -54,7 +55,7 @@ export function AuthInput({
           styles.inputShell,
           {
             borderColor,
-            backgroundColor: focused ? "#FFFFFF" : "#FDFBF7",
+            backgroundColor: focused ? "#FFFDF7" : "#FFF8ED",
           },
         ]}
       >
@@ -69,7 +70,7 @@ export function AuthInput({
             setFocus(true);
             onFocus?.(event);
           }}
-          placeholderTextColor="#817A70"
+          placeholderTextColor="#9A8372"
           secureTextEntry={hidden}
           style={[styles.input, style]}
         />
@@ -80,9 +81,9 @@ export function AuthInput({
             style={styles.eyeButton}
           >
             {hidden ? (
-              <Eye size={20} color="#566158" />
+              <Eye size={20} color="#6F5848" />
             ) : (
-              <EyeOff size={20} color="#566158" />
+              <EyeOff size={20} color="#6F5848" />
             )}
           </Pressable>
         ) : null}
@@ -97,30 +98,45 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   label: {
-    color: "#24312C",
+    color: "#3B2417",
     fontSize: 14,
-    fontWeight: "700",
+    fontWeight: "900",
     letterSpacing: 0,
   },
   inputShell: {
     alignItems: "center",
-    borderRadius: 16,
+    borderRadius: 18,
     borderWidth: 1,
     flexDirection: "row",
-    minHeight: 58,
-    paddingHorizontal: 16,
+    minHeight: 60,
+    paddingHorizontal: 14,
+    ...Platform.select({
+      web: {
+        boxShadow: "0 10px 24px rgba(74, 36, 20, 0.05)",
+      },
+      default: {
+        shadowColor: "#4A2414",
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.06,
+        shadowRadius: 16,
+        elevation: 1,
+      },
+    }),
   },
   iconSlot: {
     alignItems: "center",
-    height: 24,
+    backgroundColor: "#F5E0BD",
+    borderRadius: 12,
+    height: 34,
     justifyContent: "center",
     marginRight: 12,
-    width: 24,
+    width: 34,
   },
   input: {
-    color: "#17211D",
+    color: "#2A1D15",
     flex: 1,
     fontSize: 16,
+    fontWeight: "600",
     letterSpacing: 0,
     minWidth: 0,
     outlineStyle: "none" as never,

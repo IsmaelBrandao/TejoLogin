@@ -64,7 +64,7 @@ export default function ResetPasswordScreen() {
     >
       <AuthInput
         autoCapitalize="none"
-        icon={<LockKeyhole size={21} color="#0F5E53" />}
+        icon={<LockKeyhole size={21} color="#8A4A24" />}
         label="Nova senha"
         onChangeText={setPassword}
         placeholder="Digite a nova senha"
@@ -76,7 +76,7 @@ export default function ResetPasswordScreen() {
 
       <AuthInput
         autoCapitalize="none"
-        icon={<LockKeyhole size={21} color="#0F5E53" />}
+        icon={<LockKeyhole size={21} color="#8A4A24" />}
         label="Confirmar nova senha"
         onChangeText={setConfirmPassword}
         onSubmitEditing={handleResetPassword}
@@ -95,7 +95,7 @@ export default function ResetPasswordScreen() {
 
       <AuthButton
         disabled={!canSubmit}
-        icon={<Save size={19} color="#FFFFFF" />}
+        icon={<Save size={19} color="#FFF7EA" />}
         loading={loading}
         onPress={handleResetPassword}
       >
@@ -104,7 +104,7 @@ export default function ResetPasswordScreen() {
 
       <View style={styles.footerRow}>
         <Pressable onPress={() => router.replace("/")} style={styles.backLink}>
-          <ArrowLeft size={18} color="#0F5E53" />
+          <ArrowLeft size={18} color="#8A4A24" />
           <Text style={styles.backText}>Voltar para login</Text>
         </Pressable>
       </View>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   backText: {
-    color: "#0F5E53",
+    color: "#8A4A24",
     fontSize: 14,
     fontWeight: "900",
     letterSpacing: 0,

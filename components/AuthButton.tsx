@@ -61,7 +61,7 @@ export function AuthButton({
         ]}
       >
         {loading ? (
-          <ActivityIndicator color={variant === "primary" ? "#FFFFFF" : "#11342F"} />
+          <ActivityIndicator color={variant === "primary" ? "#FFF7EA" : "#5A301C"} />
         ) : (
           <View style={styles.content}>
             <Text
@@ -84,24 +84,26 @@ export function AuthButton({
 
 const styles = StyleSheet.create({
   pressable: {
-    borderRadius: 18,
+    borderRadius: 20,
   },
   button: {
     alignItems: "center",
-    borderRadius: 18,
-    minHeight: 58,
+    borderRadius: 20,
+    minHeight: 60,
     justifyContent: "center",
     overflow: "hidden",
     paddingHorizontal: 20,
   },
   primary: {
-    backgroundColor: "#0F5E53",
+    backgroundColor: "#8A4A24",
+    borderColor: "#B87938",
+    borderWidth: 1,
     ...Platform.select({
       web: {
-        boxShadow: "0 16px 24px rgba(15, 94, 83, 0.24)",
+        boxShadow: "0 18px 30px rgba(116, 63, 31, 0.28)",
       },
       default: {
-        shadowColor: "#0F5E53",
+        shadowColor: "#743F1F",
         shadowOffset: { width: 0, height: 16 },
         shadowOpacity: 0.24,
         shadowRadius: 24,
@@ -110,8 +112,8 @@ const styles = StyleSheet.create({
     }),
   },
   secondary: {
-    backgroundColor: "#E8EFE8",
-    borderColor: "#BFD2C7",
+    backgroundColor: "#FFF0D4",
+    borderColor: "#E0B978",
     borderWidth: 1,
   },
   disabled: {
@@ -125,13 +127,13 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 16,
-    fontWeight: "800",
+    fontWeight: "900",
     letterSpacing: 0,
   },
   primaryLabel: {
-    color: "#FFFFFF",
+    color: "#FFF7EA",
   },
   secondaryLabel: {
-    color: "#11342F",
+    color: "#5A301C",
   },
 });

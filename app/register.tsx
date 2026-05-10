@@ -68,7 +68,7 @@ export default function RegisterScreen() {
     >
       <AuthInput
         autoCapitalize="words"
-        icon={<UserRound size={21} color="#0F5E53" />}
+        icon={<UserRound size={21} color="#8A4A24" />}
         label="Nome"
         onChangeText={setName}
         placeholder="Como devemos chamar voce?"
@@ -79,7 +79,7 @@ export default function RegisterScreen() {
       <AuthInput
         autoCapitalize="none"
         autoComplete="email"
-        icon={<Mail size={21} color="#0F5E53" />}
+        icon={<Mail size={21} color="#8A4A24" />}
         keyboardType="email-address"
         label="E-mail"
         onChangeText={setEmail}
@@ -90,7 +90,7 @@ export default function RegisterScreen() {
 
       <AuthInput
         autoCapitalize="none"
-        icon={<LockKeyhole size={21} color="#0F5E53" />}
+        icon={<LockKeyhole size={21} color="#8A4A24" />}
         label="Senha"
         onChangeText={setPassword}
         placeholder="Crie uma senha segura"
@@ -102,7 +102,7 @@ export default function RegisterScreen() {
 
       <AuthInput
         autoCapitalize="none"
-        icon={<LockKeyhole size={21} color="#0F5E53" />}
+        icon={<LockKeyhole size={21} color="#8A4A24" />}
         label="Confirmar senha"
         onChangeText={setConfirmPassword}
         onSubmitEditing={handleRegister}
@@ -121,7 +121,7 @@ export default function RegisterScreen() {
 
       <AuthButton
         disabled={!canSubmit}
-        icon={<Send size={19} color="#FFFFFF" />}
+        icon={<Send size={19} color="#FFF7EA" />}
         loading={loading}
         onPress={handleRegister}
       >
@@ -130,7 +130,7 @@ export default function RegisterScreen() {
 
       <View style={styles.footerRow}>
         <Pressable onPress={() => router.back()} style={styles.backLink}>
-          <ArrowLeft size={18} color="#0F5E53" />
+          <ArrowLeft size={18} color="#8A4A24" />
           <Text style={styles.backText}>Voltar para entrar</Text>
         </Pressable>
       </View>
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   backText: {
-    color: "#0F5E53",
+    color: "#8A4A24",
     fontSize: 14,
     fontWeight: "900",
     letterSpacing: 0,

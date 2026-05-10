@@ -84,7 +84,7 @@ export default function VerifyEmailScreen() {
 
       <View style={styles.footerRow}>
         <Pressable onPress={() => router.replace("/")} style={styles.backLink}>
-          <ArrowLeft size={18} color="#0F5E53" />
+          <ArrowLeft size={18} color="#8A4A24" />
           <Text style={styles.backText}>Voltar para login</Text>
         </Pressable>
       </View>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   backText: {
-    color: "#0F5E53",
+    color: "#8A4A24",
     fontSize: 14,
     fontWeight: "900",
     letterSpacing: 0,

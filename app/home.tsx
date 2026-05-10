@@ -14,7 +14,7 @@ export default function HomeScreen() {
     <View style={styles.screen}>
       <View style={[styles.panel, isWide ? styles.panelWide : styles.panelNarrow]}>
         <View style={styles.iconBadge}>
-          <CheckCircle2 size={34} color="#0F5E53" />
+          <CheckCircle2 size={34} color="#8A4A24" />
         </View>
 
         <Text style={styles.eyebrow}>Acesso liberado</Text>
@@ -24,7 +24,7 @@ export default function HomeScreen() {
         </Text>
 
         <View style={styles.statusBox}>
-          <ShieldCheck size={22} color="#0F5E53" />
+          <ShieldCheck size={22} color="#8A4A24" />
           <View style={styles.statusTextGroup}>
             <Text style={styles.statusTitle}>Sessao segura</Text>
             <Text style={styles.statusText}>
@@ -34,7 +34,7 @@ export default function HomeScreen() {
         </View>
 
         <AuthButton
-          icon={<LogOut size={20} color="#FFFFFF" />}
+          icon={<LogOut size={20} color="#FFF7EA" />}
           onPress={() => router.replace("/")}
         >
           Sair

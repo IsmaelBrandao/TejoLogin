@@ -70,6 +70,11 @@ export function AuthScaffold({
                   style={styles.logo}
                 />
               </View>
+              <View style={styles.formDivider}>
+                <View style={styles.formDividerLine} />
+                <View style={styles.formDividerDot} />
+                <View style={styles.formDividerLine} />
+              </View>
               <Text style={styles.eyebrow}>{eyebrow}</Text>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.subtitle}>{subtitle}</Text>
@@ -190,13 +195,33 @@ const styles = StyleSheet.create({
   },
   logoWrap: {
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 14,
     width: "100%",
   },
   logo: {
     height: 132,
     maxWidth: 320,
     width: "72%",
+  },
+  formDivider: {
+    alignItems: "center",
+    flexDirection: "row",
+    gap: 8,
+    justifyContent: "center",
+    marginBottom: 24,
+  },
+  formDividerLine: {
+    backgroundColor: "#D5A35F",
+    height: 2,
+    maxWidth: 72,
+    opacity: 0.65,
+    width: "22%",
+  },
+  formDividerDot: {
+    backgroundColor: "#C35F2F",
+    borderRadius: 999,
+    height: 8,
+    width: 8,
   },
   eyebrow: {
     color: "#C35F2F",
@@ -207,14 +232,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   title: {
-    color: "#17211D",
+    color: "#25160F",
     fontSize: 42,
     fontWeight: "900",
     letterSpacing: 0,
     lineHeight: 48,
   },
   subtitle: {
-    color: "#5B625C",
+    color: "#6B594B",
     fontSize: 17,
     fontWeight: "500",
     letterSpacing: 0,

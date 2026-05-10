@@ -98,7 +98,7 @@ export default function LoginScreen() {
       <AuthInput
         autoCapitalize="none"
         autoComplete="email"
-        icon={<Mail size={21} color="#0F5E53" />}
+        icon={<Mail size={21} color="#8A4A24" />}
         keyboardType="email-address"
         label="Login"
         onChangeText={setLogin}
@@ -109,7 +109,7 @@ export default function LoginScreen() {
 
       <AuthInput
         autoCapitalize="none"
-        icon={<LockKeyhole size={21} color="#0F5E53" />}
+        icon={<LockKeyhole size={21} color="#8A4A24" />}
         label="Senha"
         onChangeText={setPassword}
         onSubmitEditing={handleLogin}
@@ -134,7 +134,7 @@ export default function LoginScreen() {
 
       {info ? (
         <AuthButton
-          icon={<Send size={19} color="#11342F" />}
+          icon={<Send size={19} color="#5A301C" />}
           loading={resending}
           onPress={handleResendVerification}
           variant="secondary"
@@ -145,7 +145,7 @@ export default function LoginScreen() {
 
       <AuthButton
         disabled={!canSubmit}
-        icon={<ArrowRight size={20} color="#FFFFFF" />}
+        icon={<ArrowRight size={20} color="#FFF7EA" />}
         loading={loading}
         onPress={handleLogin}
       >
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
   },
   link: {
-    color: "#0F5E53",
+    color: "#8A4A24",
     fontSize: 14,
     fontWeight: "800",
     letterSpacing: 0,
