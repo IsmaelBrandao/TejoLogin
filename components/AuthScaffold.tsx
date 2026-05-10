@@ -62,7 +62,14 @@ export function AuthScaffold({
 
           <View style={[styles.formPane, isWide ? styles.formWide : styles.formNarrow]}>
             <View style={styles.formContent}>
-              <Text style={styles.brand}>TEJOPAN</Text>
+              <View style={styles.logoWrap}>
+                <Image
+                  accessibilityLabel="TEJOPAN"
+                  resizeMode="contain"
+                  source={require("../assets/images/tejopan-logo.png")}
+                  style={styles.logo}
+                />
+              </View>
               <Text style={styles.eyebrow}>{eyebrow}</Text>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.subtitle}>{subtitle}</Text>
@@ -181,12 +188,15 @@ const styles = StyleSheet.create({
     maxWidth: 470,
     width: "100%",
   },
-  brand: {
-    color: "#4A2414",
-    fontSize: 26,
-    fontWeight: "900",
-    letterSpacing: 0,
-    marginBottom: 28,
+  logoWrap: {
+    alignItems: "center",
+    marginBottom: 24,
+    width: "100%",
+  },
+  logo: {
+    height: 132,
+    maxWidth: 320,
+    width: "72%",
   },
   eyebrow: {
     color: "#C35F2F",
