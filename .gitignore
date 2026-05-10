@@ -26,6 +26,7 @@ npm-debug.*
 yarn-debug.*
 yarn-error.*
 .expo-web.*.log
+ChatGPT Image*.png
 
 # macOS
 .DS_Store

@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 import {
-  Animated,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -26,38 +25,7 @@ export function AuthScaffold({
   children,
 }: AuthScaffoldProps) {
   const { width } = useWindowDimensions();
-  const isWide = width >= 920;
-  const pulse = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    const animation = Animated.loop(
-      Animated.sequence([
-        Animated.timing(pulse, {
-          toValue: 1,
-          duration: 1800,
-          useNativeDriver: true,
-        }),
-        Animated.timing(pulse, {
-          toValue: 0,
-          duration: 1800,
-          useNativeDriver: true,
-        }),
-      ])
-    );
-
-    animation.start();
-    return () => animation.stop();
-  }, [pulse]);
-
-  const glowOpacity = pulse.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.18, 0.38],
-  });
-
-  const glowScale = pulse.interpolate({
-    inputRange: [0, 1],
-    outputRange: [0.94, 1.04],
-  });
+  const isWide = width >= 900;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -73,40 +41,32 @@ export function AuthScaffold({
           ]}
         >
           <View style={[styles.heroPane, isWide ? styles.heroWide : styles.heroNarrow]}>
-            <Animated.View
-              style={[
-                styles.heroGlow,
-                styles.noPointer,
-                {
-                  opacity: glowOpacity,
-                  transform: [{ scale: glowScale }],
-                },
-              ]}
+            <Image
+              source={require("../assets/images/bakery-login.png")}
+              resizeMode="cover"
+              style={styles.heroImage}
             />
+            <View style={styles.heroOverlay} />
 
-            <View style={styles.heroImageFrame}>
-              <Image
-                source={require("../assets/images/login-hero.png")}
-                resizeMode="cover"
-                style={styles.heroImage}
-              />
-            </View>
-
-            <View style={styles.trustRow}>
-              <View style={styles.trustItem}>
-                <Text style={styles.trustText}>Acesso protegido</Text>
-              </View>
-              <View style={styles.trustItem}>
-                <Text style={styles.trustText}>Experiencia fluida</Text>
-              </View>
+            <View style={[styles.heroCopy, !isWide && styles.heroCopyNarrow]}>
+              <Text style={styles.heroKicker}>Padaria TejoLogin</Text>
+              <Text style={[styles.heroTitle, !isWide && styles.heroTitleNarrow]}>
+                O acesso da sua padaria comeca aqui.
+              </Text>
+              <Text style={styles.heroSubtitle}>
+                Entre para acompanhar pedidos, fornadas e atendimentos em um so lugar.
+              </Text>
             </View>
           </View>
 
           <View style={[styles.formPane, isWide ? styles.formWide : styles.formNarrow]}>
-            <Text style={styles.eyebrow}>{eyebrow}</Text>
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.subtitle}>{subtitle}</Text>
-            <View style={styles.formBody}>{children}</View>
+            <View style={styles.formContent}>
+              <Text style={styles.brand}>TejoLogin</Text>
+              <Text style={styles.eyebrow}>{eyebrow}</Text>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.subtitle}>{subtitle}</Text>
+              <View style={styles.formBody}>{children}</View>
+            </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -116,109 +76,113 @@ export function AuthScaffold({
 
 const styles = StyleSheet.create({
   safeArea: {
-    backgroundColor: "#F6F3EE",
+    backgroundColor: "#FFF8EE",
     flex: 1,
   },
   keyboard: {
     flex: 1,
   },
   scrollContent: {
-    alignItems: "center",
     flexGrow: 1,
-    justifyContent: "center",
-    paddingHorizontal: 22,
-    paddingVertical: 28,
   },
   scrollWide: {
     flexDirection: "row",
-    gap: 58,
+    minHeight: "100%",
   },
   scrollNarrow: {
-    gap: 26,
+    paddingBottom: 28,
   },
   heroPane: {
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: "#5A301C",
+    overflow: "hidden",
     position: "relative",
   },
   heroWide: {
-    maxWidth: 560,
-    width: "46%",
+    alignSelf: "stretch",
+    minHeight: 760,
+    width: "52%",
   },
   heroNarrow: {
-    maxWidth: 360,
+    height: 330,
     width: "100%",
-  },
-  heroGlow: {
-    backgroundColor: "#68B3A7",
-    borderRadius: 999,
-    height: 360,
-    position: "absolute",
-    width: 360,
-  },
-  noPointer: {
-    pointerEvents: "none",
-  },
-  heroImageFrame: {
-    aspectRatio: 1,
-    backgroundColor: "#FFFFFF",
-    borderColor: "#E5DED2",
-    borderRadius: 30,
-    borderWidth: 1,
-    maxWidth: 460,
-    overflow: "hidden",
-    width: "100%",
-    ...Platform.select({
-      web: {
-        boxShadow: "0 26px 32px rgba(39, 53, 47, 0.18)",
-      },
-      default: {
-        shadowColor: "#27352F",
-        shadowOffset: { width: 0, height: 26 },
-        shadowOpacity: 0.18,
-        shadowRadius: 32,
-        elevation: 8,
-      },
-    }),
   },
   heroImage: {
+    ...StyleSheet.absoluteFillObject,
     height: "100%",
+    opacity: 0.44,
     width: "100%",
   },
-  trustRow: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    gap: 10,
+  heroOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "rgba(69, 30, 11, 0.54)",
+  },
+  heroCopy: {
+    flex: 1,
     justifyContent: "center",
+    maxWidth: 560,
+    paddingHorizontal: 44,
+    paddingVertical: 42,
+    position: "relative",
+    zIndex: 1,
+  },
+  heroCopyNarrow: {
+    paddingHorizontal: 24,
+    paddingVertical: 30,
+  },
+  heroKicker: {
+    color: "#F4C46B",
+    fontSize: 14,
+    fontWeight: "900",
+    letterSpacing: 0,
+    marginBottom: 16,
+    textTransform: "uppercase",
+  },
+  heroTitle: {
+    color: "#FFF7EA",
+    fontSize: 48,
+    fontWeight: "900",
+    letterSpacing: 0,
+    lineHeight: 54,
+  },
+  heroTitleNarrow: {
+    fontSize: 34,
+    lineHeight: 40,
+  },
+  heroSubtitle: {
+    color: "#F7DCC2",
+    fontSize: 18,
+    fontWeight: "700",
+    letterSpacing: 0,
+    lineHeight: 28,
     marginTop: 18,
   },
-  trustItem: {
-    alignItems: "center",
-    backgroundColor: "#FFFFFF",
-    borderColor: "#E5DED2",
-    borderRadius: 999,
-    borderWidth: 1,
-    flexDirection: "row",
-    minHeight: 40,
-    paddingHorizontal: 18,
-  },
-  trustText: {
-    color: "#25342F",
-    fontSize: 13,
-    fontWeight: "800",
-    letterSpacing: 0,
-  },
   formPane: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 24,
+    paddingVertical: 44,
     width: "100%",
   },
   formWide: {
-    maxWidth: 450,
+    alignSelf: "stretch",
+    flex: 1,
   },
   formNarrow: {
-    maxWidth: 520,
+    alignSelf: "center",
+  },
+  formContent: {
+    maxWidth: 470,
+    width: "100%",
+  },
+  brand: {
+    color: "#4A2414",
+    fontSize: 26,
+    fontWeight: "900",
+    letterSpacing: 0,
+    marginBottom: 28,
   },
   eyebrow: {
-    color: "#B95D42",
+    color: "#C35F2F",
     fontSize: 13,
     fontWeight: "900",
     letterSpacing: 0,
