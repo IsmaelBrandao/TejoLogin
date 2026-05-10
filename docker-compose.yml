@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: tejologin-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tejologin
+      POSTGRES_PASSWORD: tejologin
+      POSTGRES_DB: tejologin
+    ports:
+      - "5432:5432"
+    volumes:
+      - tejologin_postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tejologin -d tejologin"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  tejologin_postgres:
