@@ -1,0 +1,32 @@
+databases:
+  - name: tejologin-db
+    plan: free
+    databaseName: tejologin
+    user: tejologin
+
+services:
+  - type: web
+    name: tejologin
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm --prefix server install && npm run build:web
+    startCommand: npm --prefix server start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DB_SSL
+        value: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: tejologin-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_URL
+        sync: false
+      - key: CORS_ORIGIN
+        value: "*"
+      - key: BREVO_API_KEY
+        sync: false
+      - key: MAIL_FROM
+        sync: false
