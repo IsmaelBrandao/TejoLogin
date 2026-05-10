@@ -11,7 +11,6 @@ import {
   useWindowDimensions,
   View,
 } from "react-native";
-import { ShieldCheck, Sparkles } from "lucide-react-native";
 
 type AuthScaffoldProps = {
   eyebrow: string;
@@ -95,11 +94,9 @@ export function AuthScaffold({
 
             <View style={styles.trustRow}>
               <View style={styles.trustItem}>
-                <ShieldCheck size={18} color="#0F5E53" />
                 <Text style={styles.trustText}>Acesso protegido</Text>
               </View>
               <View style={styles.trustItem}>
-                <Sparkles size={18} color="#B95D42" />
                 <Text style={styles.trustText}>Experiencia fluida</Text>
               </View>
             </View>
@@ -202,9 +199,8 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     borderWidth: 1,
     flexDirection: "row",
-    gap: 8,
     minHeight: 40,
-    paddingHorizontal: 14,
+    paddingHorizontal: 18,
   },
   trustText: {
     color: "#25342F",
