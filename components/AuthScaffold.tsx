@@ -25,7 +25,8 @@ export function AuthScaffold({
   children,
 }: AuthScaffoldProps) {
   const { width } = useWindowDimensions();
-  const isWide = width >= 900;
+  const isWaitingForWebWidth = Platform.OS === "web" && (!width || width < 1);
+  const isWide = isWaitingForWebWidth || width >= 900;
 
   return (
     <SafeAreaView style={styles.safeArea}>
