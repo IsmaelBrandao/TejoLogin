@@ -44,7 +44,10 @@ export function AuthScaffold({
             <Image
               source={require("../assets/images/bakery-login.png")}
               resizeMode="cover"
-              style={styles.heroImage}
+              style={[
+                styles.heroImage,
+                isWide ? ({ objectPosition: "70% center" } as never) : null,
+              ]}
             />
             <View style={styles.heroOverlay} />
 
