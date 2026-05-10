@@ -1,4 +1,4 @@
-# TejoLogin
+# TEJOPAN
 
 Projeto Expo com tela de login responsiva, rotas de cadastro/recuperacao e API Node conectada a Postgres.
 
@@ -66,7 +66,7 @@ No Render:
 3. Preencha os secrets solicitados:
    - `APP_URL`: a URL publica do servico, por exemplo `https://tejologin.onrender.com`
    - `BREVO_API_KEY`: sua chave da Brevo
-   - `MAIL_FROM`: `TejoLogin <ismaelbrandao2003@gmail.com>` ou outro remetente verificado
+   - `MAIL_FROM`: `TEJOPAN <ismaelbrandao2003@gmail.com>` ou outro remetente verificado
 
 O `DATABASE_URL` e o `JWT_SECRET` sao gerados automaticamente pelo Blueprint.
 
@@ -85,7 +85,7 @@ A API usa Brevo por HTTP quando `BREVO_API_KEY` esta configurado. Esse e o camin
 
 ```bash
 BREVO_API_KEY=sua-chave-api
-MAIL_FROM="TejoLogin <no-reply@seudominio.com>"
+MAIL_FROM="TEJOPAN <no-reply@seudominio.com>"
 ```
 
 Tambem existe fallback com `nodemailer` via SMTP para desenvolvimento local ou hospedagens que liberam SMTP:
@@ -95,7 +95,7 @@ SMTP_HOST=smtp-relay.brevo.com
 SMTP_PORT=587
 SMTP_USER=seu-login-smtp
 SMTP_PASS=sua-chave-smtp
-MAIL_FROM="TejoLogin <no-reply@seudominio.com>"
+MAIL_FROM="TEJOPAN <no-reply@seudominio.com>"
 ```
 
 Sem `BREVO_API_KEY` e sem SMTP, o conteudo do e-mail aparece no console da API em modo dev.

@@ -5,7 +5,7 @@ function getAppUrl() {
 }
 
 function getFromAddress() {
-  return process.env.MAIL_FROM || "TejoLogin <no-reply@localhost>";
+  return process.env.MAIL_FROM || "TEJOPAN <no-reply@localhost>";
 }
 
 function parseFromAddress(value) {
@@ -14,13 +14,13 @@ function parseFromAddress(value) {
   if (!match) {
     return {
       email: value,
-      name: "TejoLogin",
+      name: "TEJOPAN",
     };
   }
 
   return {
     email: match[2].trim(),
-    name: match[1].replace(/"/g, "").trim() || "TejoLogin",
+    name: match[1].replace(/"/g, "").trim() || "TEJOPAN",
   };
 }
 
@@ -80,7 +80,7 @@ function emailShell(title, intro, actionLabel, actionUrl, note) {
           letter-spacing:.04em;
           margin:0 0 12px;
           text-transform:uppercase;
-        ">TejoLogin</p>
+        ">TEJOPAN</p>
         <h1 style="
           color:#17211D;
           font-family:Arial,sans-serif;
@@ -164,7 +164,7 @@ async function sendVerificationEmail({ email, name, token }) {
 
   return sendEmail({
     to: email,
-    subject: "Confirme sua conta no TejoLogin",
+    subject: "Confirme sua conta na TEJOPAN",
     html: emailShell(
       "Confirme seu e-mail",
       `Ola, ${name}. Use o botao abaixo para confirmar sua conta e liberar o acesso.`,
@@ -172,7 +172,7 @@ async function sendVerificationEmail({ email, name, token }) {
       url,
       "Este link expira em 24 horas. Se voce nao criou essa conta, ignore este e-mail."
     ),
-    text: `Confirme sua conta no TejoLogin: ${url}`,
+    text: `Confirme sua conta na TEJOPAN: ${url}`,
   });
 }
 
@@ -181,7 +181,7 @@ async function sendPasswordResetEmail({ email, name, token }) {
 
   return sendEmail({
     to: email,
-    subject: "Redefina sua senha no TejoLogin",
+    subject: "Redefina sua senha na TEJOPAN",
     html: emailShell(
       "Redefina sua senha",
       `Ola, ${name}. Recebemos uma solicitacao para redefinir sua senha.`,
@@ -189,7 +189,7 @@ async function sendPasswordResetEmail({ email, name, token }) {
       url,
       "Este link expira em 1 hora. Se voce nao solicitou essa alteracao, ignore este e-mail."
     ),
-    text: `Redefina sua senha no TejoLogin: ${url}`,
+    text: `Redefina sua senha na TEJOPAN: ${url}`,
   });
 }
 

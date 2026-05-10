@@ -50,7 +50,7 @@ export function AuthScaffold({
             <View style={styles.heroOverlay} />
 
             <View style={[styles.heroCopy, !isWide && styles.heroCopyNarrow]}>
-              <Text style={styles.heroKicker}>Padaria TejoLogin</Text>
+              <Text style={styles.heroKicker}>Padaria TEJOPAN</Text>
               <Text style={[styles.heroTitle, !isWide && styles.heroTitleNarrow]}>
                 O acesso da sua padaria comeca aqui.
               </Text>
@@ -62,7 +62,7 @@ export function AuthScaffold({
 
           <View style={[styles.formPane, isWide ? styles.formWide : styles.formNarrow]}>
             <View style={styles.formContent}>
-              <Text style={styles.brand}>TejoLogin</Text>
+              <Text style={styles.brand}>TEJOPAN</Text>
               <Text style={styles.eyebrow}>{eyebrow}</Text>
               <Text style={styles.title}>{title}</Text>
               <Text style={styles.subtitle}>{subtitle}</Text>
