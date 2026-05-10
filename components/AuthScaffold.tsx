@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   heroWide: {
     alignSelf: "stretch",
     minHeight: 760,
-    width: "52%",
+    width: "58%",
   },
   heroNarrow: {
     height: 330,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   heroImageWide: {
-    width: "135%",
+    width: "118%",
   },
   heroOverlay: {
     ...StyleSheet.absoluteFillObject,
