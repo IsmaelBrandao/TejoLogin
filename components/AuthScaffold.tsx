@@ -25,11 +25,9 @@ export function AuthScaffold({
   children,
 }: AuthScaffoldProps) {
   const { width } = useWindowDimensions();
-  const browserWidth =
-    Platform.OS === "web" && typeof window !== "undefined" ? window.innerWidth : 0;
-  const viewportWidth = width || browserWidth;
-  const isWide = viewportWidth >= 1024;
-  const isCompact = !isWide && (!viewportWidth || viewportWidth < 560);
+  const isWaitingForWebWidth = Platform.OS === "web" && (!width || width < 1);
+  const isWide = isWaitingForWebWidth || width >= 900;
+  const isCompact = !isWide && width < 560;
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -39,83 +37,109 @@ export function AuthScaffold({
       >
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          contentContainerStyle={[
-            styles.scrollContent,
-            isWide ? styles.scrollWide : styles.scrollNarrow,
-          ]}
+          contentContainerStyle={styles.scrollContent}
         >
           <View
+            nativeID="auth-shell"
             style={[
-              styles.heroPane,
-              isWide ? styles.heroWide : styles.heroNarrow,
-              isCompact && styles.heroCompact,
+              styles.shell,
+              isWide ? styles.scrollWide : styles.scrollNarrow,
             ]}
           >
-            <Image
-              source={require("../assets/images/bakery-login.png")}
-              resizeMode="cover"
-              style={[
-                styles.heroImage,
-                isWide ? styles.heroImageWide : styles.heroImageNarrow,
-              ]}
-            />
-            <View style={styles.heroOverlay} />
-
             <View
+              nativeID="auth-hero"
               style={[
-                styles.heroCopy,
-                !isWide && styles.heroCopyNarrow,
-                isCompact && styles.heroCopyCompact,
+                styles.heroPane,
+                isWide ? styles.heroWide : styles.heroNarrow,
+                isCompact && styles.heroCompact,
               ]}
             >
-              <Text style={styles.heroKicker}>Padaria TEJOPAN</Text>
-              <Text
+              <Image
+                nativeID="auth-hero-image"
+                source={require("../assets/images/bakery-login.png")}
+                resizeMode="cover"
                 style={[
-                  styles.heroTitle,
-                  !isWide && styles.heroTitleNarrow,
-                  isCompact && styles.heroTitleCompact,
+                  styles.heroImage,
+                  isWide ? styles.heroImageWide : styles.heroImageNarrow,
+                ]}
+              />
+              <View style={styles.heroOverlay} />
+
+              <View
+                nativeID="auth-hero-copy"
+                style={[
+                  styles.heroCopy,
+                  !isWide && styles.heroCopyNarrow,
+                  isCompact && styles.heroCopyCompact,
                 ]}
               >
-                O acesso da sua padaria comeca aqui.
-              </Text>
-              <Text style={[styles.heroSubtitle, isCompact && styles.heroSubtitleCompact]}>
-                Entre para acompanhar pedidos, fornadas e atendimentos em um so lugar.
-              </Text>
+                <Text style={styles.heroKicker}>Padaria TEJOPAN</Text>
+                <Text
+                  nativeID="auth-hero-title"
+                  style={[
+                    styles.heroTitle,
+                    !isWide && styles.heroTitleNarrow,
+                    isCompact && styles.heroTitleCompact,
+                  ]}
+                >
+                  O acesso da sua padaria comeca aqui.
+                </Text>
+                <Text
+                  nativeID="auth-hero-subtitle"
+                  style={[styles.heroSubtitle, isCompact && styles.heroSubtitleCompact]}
+                >
+                  Entre para acompanhar pedidos, fornadas e atendimentos em um so lugar.
+                </Text>
+              </View>
             </View>
-          </View>
 
-          <View
-            style={[
-              styles.formPane,
-              isWide ? styles.formWide : styles.formNarrow,
-              isCompact && styles.formCompact,
-            ]}
-          >
-            <View style={[styles.formContent, isCompact && styles.formContentCompact]}>
-              <View style={styles.logoWrap}>
-                <Image
-                  accessibilityLabel="TEJOPAN"
-                  resizeMode="contain"
-                  source={require("../assets/images/tejopan-logo.png")}
-                  style={[styles.logo, isCompact && styles.logoCompact]}
-                />
-              </View>
-              <View style={styles.formDivider}>
-                <View style={styles.formDividerLine} />
-                <View style={styles.formDividerDot} />
-                <View style={styles.formDividerLine} />
-              </View>
-              <Text style={[styles.eyebrow, isCompact && styles.eyebrowCompact]}>
-                {eyebrow}
-              </Text>
-              <Text style={[styles.title, isCompact && styles.titleCompact]}>
-                {title}
-              </Text>
-              <Text style={[styles.subtitle, isCompact && styles.subtitleCompact]}>
-                {subtitle}
-              </Text>
-              <View style={[styles.formBody, isCompact && styles.formBodyCompact]}>
-                {children}
+            <View
+              nativeID="auth-form-pane"
+              style={[
+                styles.formPane,
+                isWide ? styles.formWide : styles.formNarrow,
+                isCompact && styles.formCompact,
+              ]}
+            >
+              <View
+                nativeID="auth-form-content"
+                style={[styles.formContent, isCompact && styles.formContentCompact]}
+              >
+                <View style={styles.logoWrap}>
+                  <Image
+                    nativeID="auth-logo"
+                    accessibilityLabel="TEJOPAN"
+                    resizeMode="contain"
+                    source={require("../assets/images/tejopan-logo.png")}
+                    style={[styles.logo, isCompact && styles.logoCompact]}
+                  />
+                </View>
+                <View style={styles.formDivider}>
+                  <View style={styles.formDividerLine} />
+                  <View style={styles.formDividerDot} />
+                  <View style={styles.formDividerLine} />
+                </View>
+                <Text style={[styles.eyebrow, isCompact && styles.eyebrowCompact]}>
+                  {eyebrow}
+                </Text>
+                <Text
+                  nativeID="auth-title"
+                  style={[
+                    styles.title,
+                    isCompact && styles.titleCompact,
+                  ]}
+                >
+                  {title}
+                </Text>
+                <Text
+                  nativeID="auth-subtitle"
+                  style={[styles.subtitle, isCompact && styles.subtitleCompact]}
+                >
+                  {subtitle}
+                </Text>
+                <View style={[styles.formBody, isCompact && styles.formBodyCompact]}>
+                  {children}
+                </View>
               </View>
             </View>
           </View>
@@ -135,6 +159,10 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+  },
+  shell: {
+    flexGrow: 1,
+    width: "100%",
   },
   scrollWide: {
     flexDirection: "row",
