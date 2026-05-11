@@ -100,7 +100,7 @@ MAIL_FROM="TEJOPAN <no-reply@seudominio.com>"
 
 Sem `BREVO_API_KEY` e sem SMTP, o conteudo do e-mail aparece no console da API em modo dev.
 
-Os templates de confirmacao e recuperacao usam a logo em `/email-assets/tejopan-email-logo.png`. No deploy, mantenha `APP_URL` apontando para a URL publica do Render para a imagem aparecer corretamente nos clientes de e-mail.
+Os templates de confirmacao e recuperacao usam a logo em `/email-assets/tejopan-email-logo.png`. No deploy, mantenha `APP_URL` apontando para a URL publica do Render para a imagem aparecer corretamente nos clientes de e-mail. Se enviar e-mails reais a partir do ambiente local, configure `EMAIL_ASSET_BASE_URL=https://tejologin.onrender.com` para a logo continuar carregando fora da sua maquina.
 
 Fluxo implementado:
 
