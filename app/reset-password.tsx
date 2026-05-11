@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
 import { ArrowLeft, LockKeyhole, Save } from "lucide-react-native";
@@ -18,9 +18,25 @@ export default function ResetPasswordScreen() {
   const [success, setSuccess] = useState(false);
 
   const canSubmit = useMemo(
-    () => token.length >= 32 && password.length >= 6 && password === confirmPassword,
-    [confirmPassword, password, token]
+    () =>
+      !success &&
+      token.length >= 32 &&
+      password.length >= 6 &&
+      password === confirmPassword,
+    [confirmPassword, password, success, token]
   );
+
+  useEffect(() => {
+    if (!success) {
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      router.replace("/");
+    }, 1300);
+
+    return () => clearTimeout(timeout);
+  }, [success]);
 
   async function handleResetPassword() {
     setMessage("");
@@ -43,7 +59,7 @@ export default function ResetPasswordScreen() {
       });
 
       setSuccess(true);
-      setMessage(result.message);
+      setMessage(`${result.message} Redirecionando para o login...`);
     } catch (error) {
       setSuccess(false);
       setMessage(
@@ -99,7 +115,7 @@ export default function ResetPasswordScreen() {
         loading={loading}
         onPress={handleResetPassword}
       >
-        Salvar nova senha
+        {success ? "Senha salva" : "Salvar nova senha"}
       </AuthButton>
 
       <View style={styles.footerRow}>
